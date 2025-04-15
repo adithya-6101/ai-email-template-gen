@@ -28,10 +28,13 @@ function Canvas({ viewHTMLCode, closeDialog, htmlCode, setHtmlCode }) {
       setEmailTemplate((prev) => [...prev, dragElementLayout?.dragLayout]);
     }
   };
+  useEffect(() => {
+    console.log("Loaded design into Canvas:", emailTemplate);
+  }, [emailTemplate]);
 
   const getLayoutComponent = (layout) => {
     if (layout?.type == "column") {
-      return <ColumnLayout layout={layout}  />;
+      return <ColumnLayout layout={layout} />;
     }
   };
 
@@ -39,11 +42,10 @@ function Canvas({ viewHTMLCode, closeDialog, htmlCode, setHtmlCode }) {
     viewHTMLCode && getHTMLCode();
   }, [viewHTMLCode]);
 
-
   const getHTMLCode = () => {
     if (htmlRef.current) {
       const htmlContent = htmlRef.current.innerHTML;
-      setHtmlCode(htmlContent)
+      setHtmlCode(htmlContent);
     }
   };
 
@@ -60,9 +62,8 @@ function Canvas({ viewHTMLCode, closeDialog, htmlCode, setHtmlCode }) {
     }
   }, [htmlCode]);
 
-
   return (
-    <div ref={htmlRef} id="canvas-area"className="mt-20 flex justify-center">
+    <div ref={htmlRef} id="canvas-area" className="mt-20 flex justify-center">
       <div
         className={`bg-white p-6 w-full 
         ${screenSize == "Desktop" ? "max-w-2xl" : "max-w-md"}
@@ -72,7 +73,7 @@ function Canvas({ viewHTMLCode, closeDialog, htmlCode, setHtmlCode }) {
         onDrop={() => onDropHandle()}
         ref={htmlRef}
       >
-        {emailTemplate?.length > 0 ? (
+        {Array.isArray(emailTemplate) && emailTemplate?.length > 0 ? (
           emailTemplate?.map((layout, index) => (
             <div key={index}>{getLayoutComponent(layout)}</div>
           ))
@@ -82,7 +83,11 @@ function Canvas({ viewHTMLCode, closeDialog, htmlCode, setHtmlCode }) {
           </h2>
         )}
       </div>
-      <ViewHtmlDialog openDialog={viewHTMLCode} htmlCode={htmlCode} closeDialog={closeDialog}/>
+      <ViewHtmlDialog
+        openDialog={viewHTMLCode}
+        htmlCode={htmlCode}
+        closeDialog={closeDialog}
+      />
     </div>
   );
 }

@@ -30,6 +30,7 @@ function Editor() {
       tid: templateId,
       email: userDetail?.email,
     });
+    console.log("Fetched from convex",result)
     // if (result && result.length > 0) {
     //   try {
     //     const parsedDesign = JSON.parse(result.design);
@@ -41,17 +42,29 @@ function Editor() {
 
     console.log(result);
     // setEmailTemplate(JSON.parse(result?.design))
+
+    let parsedDesign = [];
     try {
-      if (result?.design) {
-        setEmailTemplate((result.design));
-      } else {
-        console.warn("Template design is undefined or empty.");
-        setEmailTemplate([]); // or set to some default/fallback design
-      }
-    } catch (error) {
-      console.error("Failed to parse template design JSON:", error);
-      setEmailTemplate([]); // or show error UI
+      parsedDesign =
+        typeof result.design === "string"
+          ? JSON.parse(result.design)
+          : result.design;
+    } catch (e) {
+      console.error("Failed to parse design:", e);
     }
+
+    setEmailTemplate(parsedDesign);
+    // try {
+    //   if (result?.design) {
+    //     setEmailTemplate(JSON.parse(result.design));
+    //   } else {
+    //     console.warn("Template design is undefined or empty.");
+    //     setEmailTemplate([]); // or set to some default/fallback design
+    //   }
+    // } catch (error) {
+    //   console.error("Failed to parse template design JSON:", error);
+    //   setEmailTemplate([]); // or show error UI
+    // }
     setLoading(false)
   };
 
