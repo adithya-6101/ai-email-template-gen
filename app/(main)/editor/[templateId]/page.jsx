@@ -41,6 +41,7 @@ function Editor() {
     // }
 
     console.log(result);
+    // testing the result in console
     // setEmailTemplate(JSON.parse(result?.design))
 
     let parsedDesign = [];
