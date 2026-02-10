@@ -45,7 +45,8 @@ function SignInButton() {
   });
 
   return (
-    <div>
+    // Add suppressHydrationWarning here to ignore the extension's changes
+    <div suppressHydrationWarning>
       <Button onClick={googleLogin}>Get Started</Button>
     </div>
   );

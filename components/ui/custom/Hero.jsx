@@ -7,6 +7,7 @@ function Hero() {
     <div
       className="px-10 md:px-28 lg:px-44 xl:px-56
     flex flex-col items-center mt-24"
+      suppressHydrationWarning
     >
       <h2 className="font-bold text-5xl text-center ">
         AI-Powered <span className="text-primary"> Email Templates </span>

@@ -33,7 +33,10 @@ function Header() {
    }, []);
 
   return (
-    <div className="flex justify-between items-center p-4 shadow-sm  px-10">
+    <div
+      className="flex justify-between items-center p-4 shadow-sm  px-10"
+      suppressHydrationWarning
+    >
       <Image src={"/logo.svg"} alt="logo" width={100} height={100} />
       <div>
         {userDetail?.email ? (
