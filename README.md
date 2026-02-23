@@ -117,4 +117,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-**Built with ❤️ by [Adithya Cherukuri](https://www.linkedin.com/in/adithyach2001/)**
+**Built with ❤️ by [Adithya Cherukuri](https://www.linkedin.com/in/adithya-cherukuri-62005b199/)**
